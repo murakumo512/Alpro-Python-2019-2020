@@ -1,0 +1,293 @@
+# mencari kata yg paling panjang dari sebuah kalimat
+# isi list dari text, pakai split
+# append sort list
+
+kalimat = 'but soft what i light innnnnn yonder window breaks'
+dafkata = kalimat.split()
+print ("kalimat :",kalimat)
+print("hasil perintah kalimat.split()",dafkata)
+t = list()
+for kata in dafkata:
+ t.append((len(kata), kata)) #di insert panjang kata juga
+t.sort() # yg terurut berdasarkan panjang kata
+print("pritn t dgn panjang kata : ",t)
+urutan = list()
+
+print()
+print("isi list t di append ke list list yg lain (urutan) ")
+for length, kata in t:
+  urutan.append((length,kata)) #bila append list perhatikan kurungnya, setiap record harus dalam kurung (bila 1 record lebih dari 1 field)
+
+print("isi dari list urutan : ",urutan)
+print("lima kata terpendek :", urutan[0:5])
+
+---------------------------
+hasil :
+
+kalimat : but soft what i light innnnnn yonder window breaks
+hasil perintah kalimat.split() ['but', 'soft', 'what', 'i', 'light', 'innnnnn', 'yonder', 'window', 'breaks']
+pritn t dgn panjang kata :  [(1, 'i'), (3, 'but'), (4, 'soft'), (4, 'what'), (5, 'light'), (6, 'breaks'), (6, 'window'), (6, 'yonder'), (7, 'innnnnn')]
+
+isi list t di append ke list list yg lain (urutan) 
+isi dari list urutan :  [(1, 'i'), (3, 'but'), (4, 'soft'), (4, 'what'), (5, 'light'), (6, 'breaks'), (6, 'window'), (6, 'yonder'), (7, 'innnnnn')]
+lima kata terpendek : [(1, 'i'), (3, 'but'), (4, 'soft'), (4, 'what'), (5, 'light')]
+
+
+
+---------------------
+#memasukan isi tupple ke dalam variable
+
+m = [ 'have', 'fun' ]
+x, y = m
+print(x) #hasil : 'have'
+print(y) # hasil : 'fun'
+
+atau 
+
+m = [ 'have', 'fun' ]
+x = m[0]
+y = m[1]
+print(x)
+print(y)
+
+
+------------------------
+#Memecah tupple
+
+email = 'didanendya@ti.ukdw.ac.id'
+username, domain = email.split('@')
+print("username : ",username)
+print("Domain : ",domain)
+
+
+username :  didanendya
+Domain :  ti.ukdw.ac.id
+
+---------------------------
+#memasukan dictionary ke list
+
+d = {'a':10, 'b':1, 'c':22}
+t = list(d.items())
+print("isi dictionary d : ",d)
+print("dictionary d dimasukan ke list t : ",t)
+t.sort()
+print("t  setelah di sort ",t)
+
+
+
+#bila ingin cetak isi dari dict 
+print("print key dan val dari dict d ")
+for key, val in list(d.items()):
+ print(val, key)
+ 
+#bila dari list dimasukan lagi ke dict
+
+ddd=dict()
+for i in range (0,len(t)):
+  ddd[t[i][0]] = t[i][1]
+print(ddd)
+  
+  hasil
+  
+  isi dictionary d :  {'a': 10, 'b': 1, 'c': 22}
+dictionary d dimasukan ke list t :  [('a', 10), ('b', 1), ('c', 22)]
+t  setelah di sort  [('a', 10), ('b', 1), ('c', 22)]
+print key dan val dari dict d 
+10 a
+1 b
+22 c
+{'a': 10, 'b': 1, 'c': 22}
+
+---------------------------
+#memasukan list ke dict
+
+def Convert(a): 
+    it = iter(lst) 
+    res_dct = dict(zip(it, it)) 
+    return res_dct 
+    
+def cv(a):
+    ii = 0
+    ld=dict()
+    for i in range(0,int((len(lst)/2))):
+      ld[lst[ii]]=lst[ii+1]
+      ii=ii+1+1
+    return(ld)
+          
+# Driver code 
+lst = ['a', 1, 'b', 2, 'c', 3,'d',4,'e',5] 
+print("cara 1 : ", Convert(lst))
+print("cara 2 : ",cv(lst))
+
+hasil :`
+cara 1 :  {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5}
+cara 2 :  {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5}
+
+============================
+#mencari kata terbanyak dari sebuah text
+# isi t.txt : Saya makan nasi setiap hari. makan nasi kewajiban saya.
+import string
+fhand = open('t.txt')
+counts = dict()
+for line in fhand:
+   line = line.translate(str.maketrans('', '', string.punctuation))
+   line = line.lower()
+   words = line.split()
+   for word in words:
+      if word not in counts:
+        counts[word] = 1
+      else:
+        counts[word] += 1
+
+# urutkan dictionary by value
+lst = list()
+for key, val in list(counts.items()):
+    lst.append((val, key))
+
+lst.sort(reverse=True)
+
+for key, val in lst[:10]:
+    print(key, val)
+	
+hasil :
+2 saya
+2 nasi
+2 makan
+1 setiap
+1 kewajiban
+1 hari
+	
+=============================
+last = 'nendya'
+first = 'dida'
+number = '088112266'
+directory = dict()
+directory[last, first] = number #last,first sbg key, number sebagai value
+for last, first in directory:
+  print(first, last, directory[last,first])
+print (directory)
+
+HASIL
+
+dida nendya 088112266
+{('nendya', 'dida'): '088112266'}
+
+============================
+
+soal latihan
+
+
+
+t = (90,90,90,90)
+for i in range (0,len(t)):
+  if t[i] in t:
+    print(t[i] in t)  # print boolean true/false
+  
+    
+Data= ('Matahari Bhakti Nendya', '22064091', 'Bantul, DI Yogyakarta')
+print(Data[0])
+print(Data[1])
+print(Data[2])
+str1, str2, str3 = Data
+print(str1)
+
+tpl=tuple(str2)
+print (tpl)
+ls=list()
+ls=str1.split()
+print(ls)
+ter=ls[::-1]
+ter1=tuple(ter)
+print("nama depan : ",str1[1:])
+print ("Nama terbalik : ",ter1)
+
+name = ("Jaka", "Joko", "Jono")
+# using slicing technique
+rev_name = name[::-1]
+rev2= name[::-3]
+print("urutan: ", name)
+print("urutan_terbalik: ", rev_name)
+print("urutan_terbalik: ", rev2)
+
+hasil
+
+Yes, 'apple' is in the fruits tuple
+True
+True
+True
+True
+Matahari Bhakti Nendya
+22064091
+Bantul, DI Yogyakarta
+Matahari Bhakti Nendya
+('2', '2', '0', '6', '4', '0', '9', '1')
+['Matahari', 'Bhakti', 'Nendya']
+nama depan :  atahari Bhakti Nendya
+Nama terbalik :  ('Nendya', 'Bhakti', 'Matahari')
+urutan:  ('Jaka', 'Joko', 'Jono')
+urutan_terbalik:  ('Jono', 'Joko', 'Jaka')
+urutan_terbalik:  ('Jono',)
+
+==============================
+soal 3
+mencari jumlah pengiriman email pada jam terterntu
+
+isi file txt :
+
+From MAILER-DAEMON Fri Jul  8 12:08:34 2011
+From: Author <author@example.com>
+To: Recipient <recipient@example.com>
+Subject: Sample message 1
+
+This is the body.
+From richard mon Jul  8 11:08:35 2011
+There are 3 lines.
+
+From MAILER-DAEMON Sat Jul  9 12:08:34 2011
+From: Author <author@example.com>
+To: Recipient <recipient@example.com>
+Subject: Sample message 2
+
+This is the second body.
+
+algoritma :
+1. buka file txt
+2. masukan setiap baris dalam list ==> perintah words = line.split()
+3. setelah words di dapat, cari isi jam di kata ke berapa ? ==> kata ke 6
+4. ambil 2 huruf saja dari kata ke 6 (ambil jam nya saja)
+5. cek apakah jam ada di dict
+6. count jumlah masing2 jam
+
+dictionary_days = dict() # dictionary baru
+#fname = input('Enter a file name: ')
+fname="tt.txt"
+try:
+ fhand = open(fname)
+except FileNotFoundError:
+ print('File cannot be opened:', fname)
+ exit()
+
+for line in fhand:
+  words = line.split()
+  #print(words)
+
+  if len(words) < 3 or words[0] != 'From':
+    continue #jika awal bukan kata "from"
+  else:
+    kk=""
+    kk=words[5] #masukan dulu ke string
+    kk=(kk[0:2]) #ambil 2 huruf dari jam
+    if kk not in dictionary_days: #cek apakk ada di dict
+      dictionary_days[kk] = 1 # pertama
+    else:
+      dictionary_days[kk] += 1 # +1
+
+print(dictionary_days)
+for key, val in list(dictionary_days.items()):
+ print(key,val)
+ 
+hasil :
+
+{'12': 2, '11': 1}
+12 2
+11 1
