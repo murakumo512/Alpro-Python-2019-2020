@@ -1,0 +1,6 @@
+thistuple = (((3,9),2,3,(2,3),5,6,(7,2),8,9,(10,11)))
+aa = list(thistuple)
+print(aa[3])
+aa.remove(3)
+bb = tuple(aa)
+print(bb)
