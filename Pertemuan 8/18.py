@@ -1,0 +1,7 @@
+f = open("d.txt")
+result = f.readline()
+b = f.read().split()
+c = len(max(b))
+print(c)
+print(result[-6:-2])
+print(result[-8])
