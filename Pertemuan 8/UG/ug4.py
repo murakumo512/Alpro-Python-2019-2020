@@ -1,0 +1,7 @@
+handle = open("loremipsum.txt", "r")
+#print(handle.readline())
+txt = handle.readline()
+txt1 = txt.split()
+print(txt1)
+print("Kata terpendek: \n",min(txt1, key=len))
+print("Kata terpanjang: \n",max(txt1, key=len))
