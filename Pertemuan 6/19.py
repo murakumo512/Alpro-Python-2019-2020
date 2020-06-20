@@ -1,0 +1,1 @@
+print("Boi","Boit",sep='\n')
