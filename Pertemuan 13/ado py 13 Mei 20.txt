@@ -1,0 +1,456 @@
+List is a collection which is ordered and changeable. Allows duplicate members.
+Tuple is a collection which is ordered and unchangeable. Allows duplicate members.
+Set is a collection which is unordered and unindexed. No duplicate members.
+Dictionary is a collection which is unordered, changeable and indexed. No duplicate members.
+
+List method
+append()	Adds an element at the end of the list
+clear()		Removes all the elements from the list
+copy()		Returns a copy of the list
+count()		Returns the number of elements with the specified value
+extend()	Add the elements of a list (or any iterable), to the end of the current list
+index()		Returns the index of the first element with the specified value
+insert()	Adds an element at the specified position
+pop()		Removes the element at the specified position
+remove()	Removes the item with the specified value
+reverse()	Reverses the order of the list
+sort()		Sorts the list
+
+tuple method
+
+count()	Returns the number of times a specified value occurs in a tuple
+index()	Searches the tuple for a specified value and returns the position of where it was found
+
+
+Set method
+add()	Adds an element to the set
+clear()	Removes all the elements from the set
+copy()	Returns a copy of the set
+difference()	Returns a set containing the difference between two or more sets
+difference_update()	Removes the items in this set that are also included in another, specified set
+discard()	Remove the specified item
+intersection()	Returns a set, that is the intersection of two other sets
+intersection_update()	Removes the items in this set that are not present in other, specified set(s)
+isdisjoint()	Returns whether two sets have a intersection or not
+issubset()	Returns whether another set contains this set or not
+issuperset()	Returns whether this set contains another set or not
+pop()	Removes an element from the set
+remove()	Removes the specified element
+symmetric_difference()	Returns a set with the symmetric differences of two sets
+symmetric_difference_update()	inserts the symmetric differences from this set and another
+union()	Return a set containing the union of sets
+update()	Update the set with the union of this set and others
+
+
+dictionary method
+clear()	Removes all the elements from the dictionary
+copy()	Returns a copy of the dictionary
+fromkeys()	Returns a dictionary with the specified keys and value
+get()	Returns the value of the specified key
+items()	Returns a list containing a tuple for each key value pair
+keys()	Returns a list containing the dictionary's keys
+pop()	Removes the element with the specified key
+popitem()	Removes the last inserted key-value pair
+setdefault()	Returns the value of the specified key. If the key does not exist: insert the key, with the specified value
+update()	Updates the dictionary with the specified key-value pairs
+values()	Returns a list of all the values in the dictionary
+
+
+#remove angka 2 dari tuple
+output-> ((1,),(3,4),3)
+
+t=((1,2),(3,4),2,3)
+
+l=list(t)
+la=list()
+print(l)
+for ll in l:
+  if len(str(ll)) > 1:
+    l2 = list(ll)
+    if 2 in l2:
+      aa=l2.remove(2)
+    la.append(tuple(l2))
+  else:
+    if ll != 2:
+      la.append(ll)
+print(la)
+t=tuple(la) 
+print(t)
+
+
+#function to remove space dot
+def removespace(string): 
+    string=string.replace(".","")
+    string=string.replace(" ", "")
+    return string
+
+#perbedaan sum list dan set
+def summ(data):
+  a=0
+  c=0
+  print("data : ",data)
+  for i in data:
+    a=a+i
+  b=0
+  c=sum(data)
+  datset=set(data)
+  for i in datset:
+    b=b+i
+  return (a,b,c)
+
+data=[1,2,2,3]
+hasil=summ(data)  
+print("hasil penjumlahan list:",hasil[0])
+print("hasil set:",hasil[1])
+print("hasil sum:",hasil[2])
+
+#mencari apakah ada yg double dalam string
+def dup(str):
+  char=set()
+  for i in str:
+    if i in char:
+      return char
+    else:
+      char.add(i)
+  return char
+
+str="saya makan m."
+str=removespace(str)
+#print(dup(str))
+cc=set(str)
+kal=""
+for kk in cc:
+  kal=kal+kk
+print("kal",kal)
+for c in kal:
+  print("jml ",c,":",str.count(c))
+
+
+nim1={"11","12","13","1"}
+nim={"1","2","3"}
+allnim=nim|nim1
+intersek=nim&nim1
+Diff=nim-nim1
+Diff1=nim1-nim
+symdif=nim^nim1
+
+#print("intersect:",intersek)
+#print("union : ",allnim)
+#print("diff nim/nim1:",Diff)
+#print("diff nim1/nim:",Diff1)
+#print("symdiff : ",symdif)
+
+
+#for i in nim:
+#  print(i)
+
+
+
+nim.add(4)
+
+#print (nim)
+
+#for i in range(0,len(nim)):
+#  print(nim.pop())
+
+
+nim.discard(41)
+#print(nim)
+
+ikan=set(["koi","kembung","tuna"])
+#print (ikan)
+ikan.remove("koi")
+#print (ikan)
+ikan.add("lele")
+#print(ikan)
+
+
+
+#############
+#latihan 1
+dick=dict()
+lstanggota=list()
+group=int(input("Jumlah group:"))
+anggota=int(input("jumlah anggota / group:"))
+
+for x in range(0,group):
+  namagrp=input("nama group ")
+  for j in range(0,anggota):
+    nmanggota=(input("nama anggota:"))
+    lstanggota.append(nmanggota)
+  dick[namagrp]=lstanggota
+  lstanggota=list()
+#masukan anggota dalam list
+print(dick)
+angg=[]
+for ang in dick.values():
+  angg.append(set(ang))
+print("angg :",angg)
+print(angg[0])
+
+#intersect
+hasil=angg[0]
+
+for kk in (1,len(angg)-1):
+  #hasil=hasil & angg[kk]
+  qqq=hasil.intersection(angg[kk])
+print("intersection :",qqq)
+
+#symdiff
+hasil=angg[0]
+
+for kk in (1,len(angg)-1):
+  qqq=hasil.symmetric_difference(angg[kk])
+print("sym diff :",qqq)
+
+
+
+
+====================================
+Conversi List ke Set
+
+#List menjadi set
+L=[1,"2",3]
+S=set(L)
+print("Data dalam list :",L)
+print("List tunggal ke Set",S)
+zz=list()
+
+#Jika lsit dalam list -->set
+L=[1,"2",["a","b"]]
+print("Data dalam list in list :",L)
+for i in L:
+  if len(str(i))>2: #if anggota L is list
+    L1=set(i)  #list menjadi tuple
+    zz.append(tuple(L1)) #tambahkan dalam list baru
+  else: #if anggota L is tunggal
+    zz.append(i) #tambahkan dalam list baru
+print("Hasil Set : ",set(zz)) # rubah list yg baru ke set
+
+hasil :
+
+Data dalam list : [1, '2', 3]
+List tunggal ke Set {1, 3, '2'}
+Data dalam list in list : [1, '2', ['a', 'b']]
+Hasil Set :  {1, '2', ('a', 'b')}
+
+
+
+======================
+Conversi Set to List
+
+#Set menjadi list
+SetX= {1, 3, '2'}
+sToL=list(SetX)
+print("Set :",SetX)
+print("Set to List : ",sToL)
+print()
+sToL=list()
+SetX= {1, ('b', 'a'), '2'}
+for qq in SetX:
+  #print(qq)
+  if len(str(qq))>2:
+    sToL.append(list(qq))
+  else:
+    sToL.append(qq)
+print("Set :",SetX)
+print("Set to List : ",sToL)
+
+
+hasil :
+
+Set : {'2', 1, 3}
+Set to List :  ['2', 1, 3]
+
+Set : {'2', 1, ('b', 'a')}
+Set to List :  ['2', 1, ['b', 'a']]
+
+
+=======================================
+conversi tuple to set
+#set tidak mau kalau bentuk begini {1,3,"2",["a","b"])
+#set mau kalau bentuk begini {1,3,"2",("a","b"))
+
+
+#Tuple to Set
+TupX= (1, 3, '2')
+tToS=set(TupX)
+print("Tuple : ",TupX)
+print("Tuple to Set : ",tToS)
+
+TupX= (1, 3, '2',("a","b"))
+tToS=set(TupX)
+print("Tuple : ",TupX)
+print("Tuple to Set (ada tuplenya)  : ",tToS)
+
+# we can make set from a list
+# Output: {1, 2, 3}
+my_set = set([1, 2, 3, 2])
+print(my_set)
+
+tTos=set()
+pan=len(TupX)
+lst=list()
+for qq in TupX:
+  if len(str(qq))>2:
+     lst.append(list(qq))
+  else:
+    lst.append(qq)
+print("dlm List:",lst)
+print("kalau list dalam list mau dijadikan Set, akan error")
+print("maunya : {1,3,'2',['a','b']}")
+for a in range(0,len(lst)-1):#list ["a,"b] tidak ikut (kalau begini mau), tapi kalau ada list di dalam set, tidak mau
+  tTos.add(lst[a])
+print("Tuple to Set (tidak ada listnya)  : ",tTos)
+
+for a in range(0,len(lst)):#list ["a,"b] ikut kalau begini  tidak mau
+  tTos.add(lst[a])
+print("Tuple to Set (ada listnya) <error> : ",tTos)
+
+hasil :
+
+Tuple :  (1, 3, '2')
+Tuple to Set :  {'2', 1, 3}
+Tuple :  (1, 3, '2', ('a', 'b'))
+Tuple to Set (ada tuplenya)  :  {'2', 1, 3, ('a', 'b')}
+{1, 2, 3}
+dlm List: [1, 3, '2', ['a', 'b']]
+kalau list dalam list mau dijadikan Set, akan error
+maunya : {1,3,'2',['a','b']}
+Tuple to Set (tidak ada listnya)  :  {'2', 1, 3}
+Traceback (most recent call last):
+  File "main.py", line 33, in <module>
+    tTos.add(lst[a])
+TypeError: unhashable type: 'list'
+
+
+================================
+#cara append ke set
+
+thisset = set()
+thisset.add(1)
+for i in range(0,2):
+  thisset.add(i)  #append  ke set bila nilai int
+  thisset.update(str(i)) #append  ke set bila nilai str
+print(thisset)
+
+
+=============================
+#set ke tuple
+thisset = {1,2,3}
+sTot=tuple(thisset)
+print(sTot)
+
+thisset = {1,2,3,("a","b")}
+sTot=tuple(thisset)
+print("Bentuk asli set :",thisset)
+print("Bentuk Tuple tuple:",sTot)
+
+ss=list()
+thisset = (1,2,3,["a","b"])
+for i in thisset:
+	ss.append(i) 
+sTot=tuple(ss)
+print("Bentuk Tuple list:",sTot)
+
+hasil :
+
+(1, 2, 3)
+Bentuk asli set : {1, 2, 3, ('a', 'b')}
+Bentuk Tuple tuple: (1, 2, 3, ('a', 'b'))
+Bentuk Tuple list: (1, 2, 3, ['a', 'b'])
+
+
+
+====================================
+
+lat 2 
+1. open 2 file text, 
+2. kemudian ambil kata2 yg ada pada kedua file tsb
+3. masukan ke dict, sets
+4. intersek 
+
+
+def removespace(string): 
+    string=string.replace(".","")
+    string=string.replace(" ", "")
+    string=string.replace(",", "")
+    return string
+
+def caka(string):
+  fname=string
+  try:
+    fhand = open(fname)
+  except:
+    print('File cannot be opened:', fname)
+    exit()
+  counts = dict()
+  for line in fhand:
+    words = line.split()
+    for word in words:
+      kat=removespace(word)
+      kat=kat.lower()
+      if kat not in counts:
+        counts[kat] = 1
+      else:
+        counts[kat] += 1
+
+#print(counts)
+    for t in counts:
+      print("kata ",t,"ada",counts[t])
+
+#masukan ke sets
+    txt1set=set()
+    for t in counts:
+      txt1set.add(t)
+    print(txt1set)
+    return txt1set
+#-----------------------------------
+def ffname(string):
+  fname = input("file name "+string+":")
+  return fname
+
+def intersek(set1,set2):
+  inter=set1&set2
+  return inter
+
+filename=dict()
+for i in range(0,2):
+  sss=str(i)
+  mm=ffname(sss)
+  filename[i]=mm
+hh=dict()
+for i in filename:
+  hasil=caka(filename[i])
+  hh[i]=hasil
+print("hhh:",hh)
+for i in range(1,len(hh)):
+  gg=hh[i-1]&hh[i]
+print("intersek cara for :",gg)
+
+print("intersek cara manual:",intersek(hh[0],hh[1]))
+
+
+
+Hasil :
+
+file name 0:t1.txt
+file name 1:t2.txt
+kata  saya ada 2
+kata  makan ada 1
+kata  nasi ada 1
+kata  goreng ada 1
+kata  dan ada 1
+{'saya', 'nasi', 'makan', 'goreng', 'dan'}
+kata  tampilkan ada 1
+kata  isi ada 1
+kata  data ada 1
+kata  sebelum ada 1
+kata  dan ada 1
+kata  sesudah ada 1
+kata  konversi ada 1
+{'sebelum', 'konversi', 'data', 'isi', 'tampilkan', 'dan', 'sesudah'}
+hhh: {0: {'saya', 'nasi', 'makan', 'goreng', 'dan'}, 1: {'sebelum', 'konversi', 'data', 'isi', 'tampilkan', 'dan', 'sesudah'}}
+intersek cara for : {'dan'}
+intersek cara manual: {'dan'}
+
