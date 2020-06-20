@@ -1,0 +1,30 @@
+09/04/2020,Johnson,Kansas,20091,252,12
+09/04/2020,Labette,Kansas,20099,11,0
+09/04/2020,Leavenworth,Kansas,20103,61,1
+09/04/2020,Linn,Kansas,20107,6,0
+09/04/2020,Lyon,Kansas,20111,26,0
+09/04/2020,Marion,Kansas,20115,3,0
+09/04/2020,McPherson,Kansas,20113,13,0
+09/04/2020,Miami,Kansas,20121,3,0
+09/04/2020,Mitchell,Kansas,20123,2,0
+09/04/2020,Montgomery,Kansas,20125,11,2
+09/04/2020,Sedgwick,Kansas,20173,161,2
+09/04/2020,Seward,Kansas,20175,3,0
+09/04/2020,Shawnee,Kansas,20177,56,3
+09/04/2020,Stafford,Kansas,20185,1,0
+09/04/2020,Stevens,Kansas,20189,1,0
+09/04/2020,Sumner,Kansas,20191,2,1
+09/04/2020,Wabaunsee,Kansas,20197,1,0
+09/04/2020,Woodson,Kansas,20207,3,0
+09/04/2020,Wyandotte,Kansas,20209,277,16
+09/04/2020,Jefferson,Kentucky,21111,436,33
+09/04/2020,Bossier,Louisiana,22015,171,7
+09/04/2020,Caddo,Louisiana,22017,906,26
+09/04/2020,Calcasieu,Louisiana,22019,209,4
+09/04/2020,Caldwell,Louisiana,22021,18,0
+09/04/2020,Cameron,Louisiana,22023,1,0
+09/04/2020,Catahoula,Louisiana,22025,17,1
+09/04/2020,Claiborne,Louisiana,22027,38,2
+09/04/2020,Concordia,Louisiana,22029,13,1
+09/04/2020,De Soto,Louisiana,22031,101,7
+09/04/2020,East Baton Rouge,Louisiana,22033,1000,36
