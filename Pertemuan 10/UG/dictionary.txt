@@ -1,0 +1,296 @@
+#Mencari jumlah huruf dalam satu kata
+
+word = 'brontosaurus'
+d = dict()
+for c in word:
+ d[c] = d.get(c,0) + 1
+print(d)
+
+hasil
+{'b': 1, 'r': 2, 'o': 2, 'n': 1, 't': 1, 's': 2, 'a': 1, 'u': 2}
+
+===================
+# menghitung kata dari kalimat ke dalam dict
+
+import string  # persiapkan string
+
+fname = input('Enter the file name: ')
+try:
+  fhand  = open(fname)
+except:
+  print('File cannot be opened:', fname)
+  exit()
+counts = dict()  # definisikan dictionary
+for line in fhand:   # baca file dari awal
+  line = line.rstrip()  # buang spasi di bagian kanan
+  line = line.translate(line.maketrans('', '', string.punctuation))
+  line = line.lower()
+  words = line.split()
+for word in words:
+  if word not in counts:
+    counts[word] = 1
+  else:
+    counts[word] += 1
+
+print(counts)
+
+
+
+hasil :
+
+Enter the file name: t.txt
+{'saya': 2, 'makan': 2, 'nasi': 2, 'setiap': 1, 'hari': 1, 'juga': 1, 'esok': 1, 'harinya': 1}
+
+
+
+isi t.txt :
+saya makan nasi setiap hari. saya juga  makan nasi esok harinya.
+=============================
+
+
+#mencari isi dari dic. yg ditampilkan isi saja (kondisi unik/cukup) 
+
+data = [{"V":"S001"}, {"V": "S002"}, {"VI": "S001"}, {"VI": "S005"}, {"VII":"S005"}, {"V":"S009"},{"VIII":"S007"}]
+print("Data asli: ",data)
+nilai_unik = set( val for dic in data for val in dic.values())
+print("Nilai Unik: ",nilai_unik)
+
+hasil
+
+Data asli:  [{'V': 'S001'}, {'V': 'S002'}, {'VI': 'S001'}, {'VI': 'S005'}, {'VII': 'S005'}, {'V': 'S009'}, {'VIII': 'S007'}]
+Nilai Unik:  {'S001', 'S002', 'S007', 'S005', 'S009'}
+
+
+
+
+============================
+
+count = 0
+dictionary_words = dict()
+fname = input('Masukkan nama file : ')
+fword = input('Kata yang dicari : ')
+try:
+ fhand = open(fname)
+except FileNotFoundError:
+ print('Fie tidak bisa dibuka !!', fname)
+# exit()
+
+for line in fhand:
+ words = line.split()
+ for word in words:
+  count += 1
+  if word in dictionary_words:
+    continue
+  dictionary_words[word] = count # kata yg pertama muncul
+
+print('\nDaftar Kamus : \n')
+print("Bentuk dic : \n",dictionary_words)
+print("bentuk list : \n",words)
+
+if fword in dictionary_words:
+  print('\nKata %s ditemukan dalam kamus' % fword)
+else:
+  print('\nKata %s tidak ditemukan dalam kamus' % fword)
+
+
+hasil
+
+Masukkan nama file : t.txt
+Kata yang dicari : nasi
+
+Daftar Kamus (dlm Bentuk dic) : 
+ {'saya': 1, 'makan': 2, 'nasi': 3, 'setiap': 4, 'hari.': 5, 'juga': 7, 'esok': 10, 'harinya.': 11}
+
+bentuk list : 
+ ['saya', 'makan', 'nasi', 'setiap', 'hari.', 'saya', 'juga', 'makan', 'nasi', 'esok', 'harinya.']
+
+Kata nasi ditemukan dalam kamus
+
+======================
+
+
+isi file t.txt :
+From MAILER-DAEMON Fri Jul  8 12:08:34 2011
+From: Author <author@example.com>
+To: Recipient <recipient@example.com>
+Subject: Sample message 1
+
+This is the body.
+>From (should be escaped).
+There are 3 lines.
+
+From MAILER-DAEMON Sat Jul  9 12:08:34 2011
+From: Author <author@example.com>
+To: Recipient <recipient@example.com>
+Subject: Sample message 2
+
+This is the second body.
+
+
+program :
+
+dictionary_days = dict() # dictionary baru
+fname = input('Enter a file name: ')
+try:
+ fhand = open(fname)
+except FileNotFoundError:
+ print('File cannot be opened:', fname)
+ exit()
+
+for line in fhand:
+  words = line.split()
+  if len(words) < 3 or words[0] != 'From':
+    continue
+  else:
+    if words[2] not in dictionary_days:
+      dictionary_days[words[2]] = 1 # pertama
+    else:
+      dictionary_days[words[2]] += 1 # +1
+
+print(dictionary_days)
+
+hasil
+
+Enter a file name: t.txt
+{'Fri': 1, 'Sat': 1}
+
+
+==================================
+LATIHAN 1
+
+aa =  {1: 10, 2: 20, 3: 30, 4: 40, 5: 50, 6: 60}
+ulang=0
+print("Jumlah data: \n:", len(aa))
+print("===========================")
+for key  in aa:
+  ulang=ulang +1
+  print(key,aa[key],ulang)
+
+
+HASIL
+
+Jumlah data: 
+: 6
+===========================
+1 10 1
+2 20 2
+3 30 3
+4 40 4
+5 50 5
+6 60 6
+
+==========================
+Latihan 2
+
+Lista = ['red', 'green', 'blue']
+Listb = ['#FF0000','#008000', '#0000FF']
+kamus = dict()
+panjang = len(Lista)
+for x in range(0,panjang):
+  kamus[Lista[x]]=Listb[x]
+
+print("Dictionary = ", kamus)
+
+hasil
+
+Dictionary =  {'red': '#FF0000', 'green': '#008000', 'blue': '#0000FF'}
+
+===================
+
+latihn 3
+
+dictionary_days = dict() # dictionary baru
+fname = input('Enter a file name: ')
+try:
+ fhand = open(fname)
+except FileNotFoundError:
+ print('File cannot be opened:', fname)
+ exit()
+j=0
+for line in fhand:
+  words = line.split()
+  #print(words)
+  if (len(words) < 3 or words[0] != 'From:') and (len(words) < 3 or words[0] != 'To:') :
+    continue
+  else:
+    if words[2] not in dictionary_days:
+      dictionary_days[words[2]] = 1 # pertama
+    else:
+      dictionary_days[words[2]] += 1 # +1
+
+print(dictionary_days)
+
+hasil
+Enter a file name: t.txt
+{'<author@example.com>': 2, '<saya@example.com>': 1, '<recipient@example.com>': 1}
+
+isi t.txt :
+From MAILER-DAEMON Fri Jul  8 12:08:34 2011
+From: Author <author@example.com>
+To: Recipient <saya@example.com>
+Subject: Sample message 1
+
+This is the body.
+>From (should be escaped).
+There are 3 lines.
+
+From MAILER-DAEMON Sat Jul  9 12:08:34 2011
+From: Author <author@example.com>
+To: Recipient <recipient@example.com>
+Subject: Sample message 2
+
+This is the second body.
+
+==================== 
+Latihan 4
+
+
+dictionary_days = dict() # dictionary baru
+qq=dict()
+qqa=""
+www=[]
+domain=""
+#fname = input('Enter a file name: ')
+fname="t.txt"
+try:
+ fhand = open(fname)
+except FileNotFoundError:
+ print('File cannot be opened:', fname)
+ exit()
+j=0
+for line in fhand:
+  words = line.split()
+  #print(words)
+  if (len(words) < 3 or words[0] != 'From:') and (len(words) < 3 or words[0] != 'To:') :
+    continue
+  else:
+    if words[2] not in dictionary_days:
+      dictionary_days[words[2]] = 1 # pertama    
+      qqa=words[2]
+      x = qqa.find("@")
+      domain=qqa[x:len(qqa)-1]
+      www.append(domain)  #masukan ke list
+    else:
+      dictionary_days[words[2]] += 1 # +1
+      qqa=words[2]
+      x = qqa.find("@")
+      domain=qqa[x:len(qqa)-1]
+      www.append(domain) #masukan ke list
+print("email : \n", dictionary_days)
+print()
+# bagian ini untuk cetak domain
+counts=dict()
+for word in www:
+  if word not in counts:
+    counts[word] = 1
+  else:
+    counts[word] += 1
+print("Domain : \n", counts)
+
+hasil :
+
+email : 
+ {'<author@example.com>': 3, '<saya@exampl1e.com>': 1, '<recipient@example.com>': 1, '<recipient1@example.com>': 1}
+
+Domain : 
+ {'@example.com': 5, '@exampl1e.com': 1}
