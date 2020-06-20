@@ -1,0 +1,171 @@
+import re
+def passCheck(passwd):
+    if re.match('^(?=.*[a-z])(?=.*\d)(?=.*[@$!%*#?&-;_?^])[a-z0-9@$!%*#?&-;_?^]{6,20}$', passwd):
+     print("Password valid.")
+    else:
+      print("Password tidak valid.")
+passwd= "-sjk.;s_l?+@8hj^sut5"
+passCheck(passwd)
+
+
+#Kriteria dibuat dalam bentuk positive lookahead
+#Positive Lookahead akan menyertakan hasil ekspresi/pola utama jika syarat pola yang diberikan sesudah ekspresi utama terpenuhi.
+
+#jika setelah .* terdapat [a-z] maka pola ini benar
+#  ^(?=.*[a-z]) ==> sembarang karakter yg diinput akan benar jika yg diinput adalah [a-z]
+
+#(?=.*\d) ==> sembarang karakter yg diinput akan benar jika yg diinput adalah [0-9] / digit
+#(?=.*[@$!%*#?&]) ==> sembarang karakter yg diinput akan benar jika yg diinput adalah [@$!%*#?&]
+
+#[a-z0-9@$!#%*?&]{6,20}$ ==> huruf terAKHIR ADALAH [a-z0-9@$!#%*?&]
+				{6,20} --> ada tepat 6 hingga 20 
+
+#=========================================================================
+#No 3
+
+#memanfaatkan perintah re.sub 
+
+Algoritma :
+1. masukan kalimat ke list dengan menggunakan re.split
+  x = re.split("\s", txt)
+
+2. lakukan pweulangan dengan for untuk mengganti character
+
+  for i in range(0,len(x)):
+    xa = re.sub(r"A|a", "1", x[i])
+    xa = re.sub(r"I|i", "2", xa) 
+    xa = re.sub(r"U|u", "3", xa) 
+    xa = re.sub(r"E|e", "4", xa) 
+    xa = re.sub(r"O|o", "5", xa)
+    aa.append(xa)
+  print(aa) 
+
+
+
+import re
+
+def ubah(x):
+  x = re.split("\s", txt)
+  #print(x)
+  aa=[]
+  for i in range(0,len(x)):
+    xa = re.sub(r"A|a", "1", x[i])
+    xa = re.sub(r"I|i", "2", xa) 
+    xa = re.sub(r"U|u", "3", xa) 
+    xa = re.sub(r"E|e", "4", xa) 
+    xa = re.sub(r"O|o", "5", xa)
+    aa.append(xa)
+  print(aa) 
+
+txt = "AA BBU UII EEO Oouia"
+ubah(txt)  
+
+
+#======================================================
+No 4
+
+Memanfaatkan re.findall, sehingga setiap nnnilai yang cocok akan disimpan
+dalam list.
+
+  list1 = re.findall("([1])", txt) ==> mencari kata yang mengandung digit 1 dan memasukannya ke list 
+
+untuk mencari jumlah list, menggunakan perintah len
+
+    print("Lokasi1: ",len(list1),"barang")
+
+
+import re
+
+def sortirProses(txt):
+    list1 = re.findall("([1])", txt)
+    print("Lokasi1: ",len(list1),"barang")
+    list2 = re.findall("([2])", txt)
+    print("Lokasi2: ",len(list2),"barang")
+    list3 = re.findall("([3])", txt)
+    print("Lokasi3: ",len(list3),"barang")  
+
+txt = """RRRU3 YU3RR FJK2 JD2K
+HHS1EE HJRR2 HH2JJM UU1UI 3JJI
+YY1EER"""
+sortirProses(txt)
+
+================================================================
+
+No 5
+
+
+criteria pantun bila 2 huruf terakhir dari text1 dan text2 sama.
+
+Algoritma :
+
+gunakan re.findall untuk mencari 2 huruf terakhir untuk dimasukan ke list
+    list1 = re.findall(r".{2}$", txt1)
+    list2 = re.findall(r"[a-z]{2}$", txt2)
+
+sengaja dibuat berbeda untuk mencari list1 dan list2, tetapi hasilnya sama
+pada list1 digunakan 
+  . ==> mencakup semua karakter
+  {2}$ ==> 2 huruf terakhir
+
+pada list2 digunakan 
+  [a-z] ==> mencakup huruf a hingga z
+  {2}$ ==> 2 huruf terakhir
+
+untuk kasus ini cara keduanya benar
+
+
+Kemudian bandingkan kedua list dengan if
+
+
+
+import re
+
+def pantun(txt1,txt2):
+
+    list1 = re.findall(r".{2}$", txt1)
+    list2 = re.findall(r"[a-z]{2}$", txt2)
+    if list1 == list2:
+      print("Cakepp.. Pantunnya")
+    else:
+      print("Itu bukan pantun")
+
+txt1 = 'Pohon randu di buat peti'
+txt2 = 'Hatiku rindu setengah mati'
+pantun(txt1,txt2)
+
+
+=========================
+No 2
+
+import re
+
+def ubah(x):
+  kal=""
+  x = re.split("\s", txt)
+  for i in range(0,len(x)):
+    for j in range(0,len(x[i])):
+      if x[i][j]=="h":
+         xa = re.sub(r"h", "p", x[i][j])
+         kal=kal+xa
+      elif x[i][j]=="p":
+         xa = re.sub(r"p", "h", x[i][j])
+         kal=kal+xa
+
+      elif x[i][j]=="n":
+         xa = re.sub(r"n", "dh", x[i][j])
+         kal=kal+xa
+      elif x[i][j]=="dh":
+         xa = re.sub(r"dh", "n", x[i][j])
+         kal=kal+xa
+
+      elif x[i][j]=="t":
+         xa = re.sub(r"t", "g", x[i][j])
+         kal=kal+xa
+      
+      else: 
+         kal=kal+x[i][j]
+      
+    kal=kal+" "
+  print(kal)
+txt = "mata mu"
+ubah(txt)  

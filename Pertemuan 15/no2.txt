@@ -1,0 +1,32 @@
+import re
+
+def ubah(x):
+  kal=""
+  x = re.split("\s", txt)
+  for i in range(0,len(x)):
+    for j in range(0,len(x[i])):
+      if x[i][j]=="h":
+         xa = re.sub(r"h", "p", x[i][j])
+         kal=kal+xa
+      elif x[i][j]=="p":
+         xa = re.sub(r"p", "h", x[i][j])
+         kal=kal+xa
+
+      elif x[i][j]=="n":
+         xa = re.sub(r"n", "dh", x[i][j])
+         kal=kal+xa
+      elif x[i][j]=="dh":
+         xa = re.sub(r"dh", "n", x[i][j])
+         kal=kal+xa
+
+      elif x[i][j]=="t":
+         xa = re.sub(r"t", "g", x[i][j])
+         kal=kal+xa
+      
+      else: 
+         kal=kal+x[i][j]
+      
+    kal=kal+" "
+  print(kal)
+txt = "mata mu"
+ubah(txt)
